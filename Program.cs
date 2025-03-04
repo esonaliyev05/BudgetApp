@@ -1,3 +1,4 @@
+using BudgetApp.Auth.Controllers;
 using BudgetApp.Auth.Repositories;
 using BudgetApp.Auth.Repositories.Interface;
 using BudgetApp.Auth.Services;
@@ -20,7 +21,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddServiceConfiguration()
 	.AddSwaggerService(builder.Configuration);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+	.AddApplicationPart(typeof(UserController).Assembly);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddLogging(logging=>logging.AddConsole());
 
